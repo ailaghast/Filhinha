@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cat</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            display: block; /* Removes bottom margin/gap */
+            max-width: 100%; /* Responsive image */
+            max-height: 80vh; /* Adjusts to viewport height */
+        }
+    </style>
+</head>
+<body>
+    <img src="your-image-url.jpg" alt="A photo of my cat">
+</body>
+</html>
