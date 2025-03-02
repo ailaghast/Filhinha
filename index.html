@@ -82,6 +82,9 @@
     <!-- This will be your transparent animation cat that's not shown until triggered -->
     <img id="animationCat" class="animation-cat" src="https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/Favicon.png" alt="Animation Filhinha">
     <script>
+         TESTING MODE: Uncomment and set the number (1-10) to test a specific animation
+         const TEST_ANIMATION = 9; // <-- Change this number to test different animations
+        
         // List of images
         const images = [
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200319_194624333.jpg',
@@ -372,7 +375,7 @@
                     animationDuration = 2000;
                     break;
                     
-                /* case 6:
+                 case 6:
                     // Bouncing Cat
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
@@ -466,7 +469,7 @@
                     
                     animationCat.style.animation = 'pulse 3s ease-in-out forwards';
                     animationDuration = 3000;
-                    break; */
+                    break; 
 
                     
             }
