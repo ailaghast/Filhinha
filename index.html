@@ -363,19 +363,27 @@
                     break;
 
                     case 5:
-                    // Spinning Cat
+                    // Spinning Cat - newspaper effect
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
                     animationCat.style.top = '50%';
                     animationCat.style.left = '50%';
                     animationCat.style.transform = 'translate(-50%, -50%)';
-                    animationCat.style.width = '100px';
+                    animationCat.style.width = '10px'; // Start very small
                     
                     const spinAnimation = `
                         @keyframes spinAround {
-                            0% { transform: translate(-50%, -50%) rotate(0deg); }
-                            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.5); }
-                            100% { transform: translate(-50%, -50%) rotate(360deg); opacity: 0; }
+                            0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.1); }
+                            10% { transform: translate(-50%, -50%) rotate(720deg) scale(0.3); }
+                            20% { transform: translate(-50%, -50%) rotate(1440deg) scale(0.6); }
+                            30% { transform: translate(-50%, -50%) rotate(2160deg) scale(1.0); }
+                            40% { transform: translate(-50%, -50%) rotate(2880deg) scale(1.5); }
+                            50% { transform: translate(-50%, -50%) rotate(3600deg) scale(3.0); }
+                            60% { transform: translate(-50%, -50%) rotate(3600deg) scale(3.0); }
+                            70% { transform: translate(-50%, -50%) rotate(4320deg) scale(2.0); }
+                            80% { transform: translate(-50%, -50%) rotate(5040deg) scale(1.0); }
+                            90% { transform: translate(-50%, -50%) rotate(5760deg) scale(0.5); }
+                            100% { transform: translate(-50%, -50%) rotate(6480deg) scale(0.1); opacity: 0; }
                         }
                     `;
                     
@@ -383,35 +391,83 @@
                     spinStyle.innerHTML = spinAnimation;
                     document.head.appendChild(spinStyle);
                     
-                    animationCat.style.animation = 'spinAround 2s ease-in-out forwards';
-                    animationDuration = 2000;
+                    animationCat.style.animation = 'spinAround 5s ease-in-out forwards';
+                    animationDuration = 5000;
                     break;
                     
-                 case 6:
-                    // Bouncing Cat
+                case 6:
+                    // New Bouncing Cat - smooth and natural bouncing
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
-                    animationCat.style.top = '10%';
+                    animationCat.style.bottom = '80%';
                     animationCat.style.left = '10%';
                     animationCat.style.width = '80px';
                     
-                    const bounceAnimation = `
-                        @keyframes bounce {
-                            0% { top: 10%; left: 10%; transform: rotate(0deg); }
-                            20% { top: 80%; left: 30%; transform: rotate(90deg); }
-                            40% { top: 30%; left: 70%; transform: rotate(180deg); }
-                            60% { top: 60%; left: 40%; transform: rotate(270deg); }
-                            80% { top: 20%; left: 80%; transform: rotate(360deg); }
-                            100% { top: 110%; left: 110%; opacity: 0; }
+                    // Create a container to handle horizontal movement
+                    const bounceContainer = document.createElement('div');
+                    bounceContainer.style.position = 'absolute';
+                    bounceContainer.style.width = '100%';
+                    bounceContainer.style.height = '100%';
+                    bounceContainer.style.top = '0';
+                    bounceContainer.style.left = '0';
+                    bounceContainer.style.pointerEvents = 'none';
+                    document.body.appendChild(bounceContainer);
+                    
+                    // Append the cat to the container
+                    bounceContainer.appendChild(animationCat);
+                    
+                    // Create horizontal movement animation
+                    const horizontalAnimation = `
+                        @keyframes moveHorizontal {
+                            0% { transform: translateX(10%); }
+                            16% { transform: translateX(25%); }
+                            32% { transform: translateX(40%); }
+                            48% { transform: translateX(55%); }
+                            64% { transform: translateX(70%); }
+                            80% { transform: translateX(85%); }
+                            100% { transform: translateX(100%); }
                         }
                     `;
                     
-                    const bounceStyle = document.createElement('style');
-                    bounceStyle.innerHTML = bounceAnimation;
-                    document.head.appendChild(bounceStyle);
+                    // Create vertical bouncing animation
+                    const verticalAnimation = `
+                        @keyframes bounceVertical {
+                            0% { bottom: 80%; }
+                            15% { bottom: 20%; }
+                            30% { bottom: 60%; }
+                            45% { bottom: 20%; }
+                            60% { bottom: 40%; }
+                            75% { bottom: 20%; }
+                            90% { bottom: 30%; }
+                            100% { bottom: -20%; opacity: 0; }
+                        }
+                    `;
                     
-                    animationCat.style.animation = 'bounce 4s ease-in-out forwards';
-                    animationDuration = 4000;
+                    // Create rotation animation
+                    const rotationAnimation = `
+                        @keyframes gentleRotate {
+                            0% { transform: rotate(0deg); }
+                            25% { transform: rotate(15deg); }
+                            75% { transform: rotate(-15deg); }
+                            100% { transform: rotate(0deg); }
+                        }
+                    `;
+                    
+                    // Add all animations to the document
+                    const animationStyle = document.createElement('style');
+                    animationStyle.innerHTML = horizontalAnimation + verticalAnimation + rotationAnimation;
+                    document.head.appendChild(animationStyle);
+                    
+                    // Apply animations
+                    bounceContainer.style.animation = 'moveHorizontal 6s ease-in-out forwards';
+                    animationCat.style.animation = 'bounceVertical 6s ease-in-out forwards, gentleRotate 1s ease-in-out infinite';
+                    
+                    // Cleanup after animation completes
+                    setTimeout(() => {
+                        bounceContainer.remove();
+                    }, 6000);
+                    
+                    animationDuration = 6000;
                     break;
                     
                 case 7:
@@ -458,67 +514,103 @@
                     break;
                     
                 case 8:
-                    // Growing/Shrinking Cat
+                    // Super Growing/Shrinking Cat - more dramatic
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
                     animationCat.style.top = '50%';
                     animationCat.style.left = '50%';
                     animationCat.style.width = '0px';
                     animationCat.style.transform = 'translate(-50%, -50%)';
+                    animationCat.style.borderRadius = '50%'; // Start as a circle
                     
                     const pulseAnimation = `
-                        @keyframes pulse {
-                            0% { width: 0px; opacity: 0; }
-                            40% { width: 200px; opacity: 1; }
-                            60% { width: 200px; opacity: 1; }
-                            100% { width: 0px; opacity: 0; }
+                        @keyframes dramaticPulse {
+                            0% { width: 0px; opacity: 0; border-radius: 50%; }
+                            10% { width: 50px; opacity: 0.3; border-radius: 45%; }
+                            20% { width: 100px; opacity: 0.6; border-radius: 40%; }
+                            30% { width: 150px; opacity: 0.8; border-radius: 30%; }
+                            40% { width: 300px; opacity: 1; border-radius: 20%; }
+                            50% { width: 500px; opacity: 1; border-radius: 10%; }
+                            60% { width: 500px; opacity: 1; border-radius: 10%; }
+                            70% { width: 300px; opacity: 1; border-radius: 20%; }
+                            80% { width: 150px; opacity: 0.8; border-radius: 30%; }
+                            90% { width: 50px; opacity: 0.5; border-radius: 40%; }
+                            100% { width: 0px; opacity: 0; border-radius: 50%; }
+                        }
+                    `;
+                    
+                    // Add a pulsing shadow effect
+                    const shadowAnimation = `
+                        @keyframes pulseShadow {
+                            0% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+                            50% { box-shadow: 0 0 20px 10px rgba(0,0,0,0.3); }
+                            100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
                         }
                     `;
                     
                     const pulseStyle = document.createElement('style');
-                    pulseStyle.innerHTML = pulseAnimation;
+                    pulseStyle.innerHTML = pulseAnimation + shadowAnimation;
                     document.head.appendChild(pulseStyle);
                     
-                    animationCat.style.animation = 'pulse 3s ease-in-out forwards';
-                    animationDuration = 3000;
-                    break; 
-
-                    case 9:
-                    // Chase the Mouse (for a set time)
+                    animationCat.style.animation = 'dramaticPulse 5s ease-in-out forwards, pulseShadow 1s ease-in-out infinite';
+                    animationDuration = 5000;
+                    break;
+                    
+                case 9:
+                    // Improved Mouse Chase (smoother)
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
                     animationCat.style.width = '60px';
-                    animationCat.style.transition = 'left 0.3s ease, top 0.3s ease';
                     animationCat.style.zIndex = '1000';
                     
-                    // Position in the center initially
-                    animationCat.style.top = '50%';
-                    animationCat.style.left = '50%';
+                    // Get initial mouse position or use center of screen
+                    let mouseX = window.innerWidth / 2;
+                    let mouseY = window.innerHeight / 2;
+                    
+                    // Position cat initially
+                    animationCat.style.top = mouseY + 'px';
+                    animationCat.style.left = mouseX + 'px';
                     animationCat.style.transform = 'translate(-50%, -50%)';
                     
-                    // Create follow mouse function
-                    const chaseDuration = 5000; // 5 seconds of chasing
-                    const chaseMouseHandler = (e) => {
-                        // Add slight delay for more natural following
-                        setTimeout(() => {
-                            const x = e.clientX;
-                            const y = e.clientY;
-                            
-                            // Flip the cat's direction based on mouse position
-                            if (x > parseInt(animationCat.style.left)) {
-                                animationCat.style.transform = 'translateY(-50%) scaleX(1)'; // face right
-                            } else {
-                                animationCat.style.transform = 'translateY(-50%) scaleX(-1)'; // face left
-                            }
-                            
-                            // Move cat toward cursor with slight offset
-                            animationCat.style.left = (x - 30) + 'px';
-                            animationCat.style.top = (y - 30) + 'px';
-                        }, 100);
+                    // Track mouse position without delay for smoother following
+                    const trackMouseHandler = (e) => {
+                        mouseX = e.clientX;
+                        mouseY = e.clientY;
                     };
                     
-                    // Add mouse move listener
-                    document.addEventListener('mousemove', chaseMouseHandler);
+                    // Use requestAnimationFrame for smooth animation
+                    let animationFrameId;
+                    let lastDirection = 'right'; // Track last direction to avoid flickering
+                    
+                    // Function to animate the cat
+                    const animateCat = () => {
+                        // Current cat position
+                        const catX = parseFloat(animationCat.style.left) || mouseX;
+                        const catY = parseFloat(animationCat.style.top) || mouseY;
+                        
+                        // Calculate new position with easing (smoother follow)
+                        const newX = catX + (mouseX - catX) * 0.15;
+                        const newY = catY + (mouseY - catY) * 0.15;
+                        
+                        // Update cat position
+                        animationCat.style.left = newX + 'px';
+                        animationCat.style.top = newY + 'px';
+                        
+                        // Determine direction with hysteresis to prevent flickering
+                        const movingRight = mouseX > catX;
+                        if ((movingRight && lastDirection === 'left' && mouseX - catX > 20) || 
+                            (!movingRight && lastDirection === 'right' && catX - mouseX > 20)) {
+                            lastDirection = movingRight ? 'right' : 'left';
+                            animationCat.style.transform = 'translate(-50%, -50%) scaleX(' + (movingRight ? 1 : -1) + ')';
+                        }
+                        
+                        // Continue animation
+                        animationFrameId = requestAnimationFrame(animateCat);
+                    };
+                    
+                    // Start tracking mouse and animation
+                    document.addEventListener('mousemove', trackMouseHandler);
+                    animationFrameId = requestAnimationFrame(animateCat);
                     
                     // Add fade out animation
                     const fadeOutAnimation = `
@@ -532,12 +624,17 @@
                     fadeStyle.innerHTML = fadeOutAnimation;
                     document.head.appendChild(fadeStyle);
                     
-                    // Remove listener and fade out after set time
+                    // Set duration and cleanup
+                    const chaseDuration = 5000; // 5 seconds of chasing
                     setTimeout(() => {
-                        document.removeEventListener('mousemove', chaseMouseHandler);
+                        // Stop animation and tracking
+                        cancelAnimationFrame(animationFrameId);
+                        document.removeEventListener('mousemove', trackMouseHandler);
+                        
+                        // Fade out
                         animationCat.style.animation = 'fadeOut 1s forwards';
                         
-                        // Hide after fade completes
+                        // Cleanup
                         setTimeout(() => {
                             animationCat.style.display = 'none';
                         }, 1000);
@@ -547,93 +644,106 @@
                     break;
                     
                 case 10:
-                    // Kaleidoscope effect
-                    const cloneCount = 12; // Number of clones in the kaleidoscope
-                    const radius = 150; // Distance from center
+                    // Fixed Kaleidoscope effect - completely redone
+                    const containerSize = 300; // Size of the container
+                    const catSize = 50; // Size of each cat image
+                    const catCount = 12; // Number of cats in the kaleidoscope
                     
-                    // Create container for kaleidoscope
-                    const kaleidoscopeContainer = document.createElement('div');
-                    kaleidoscopeContainer.className = 'kaleidoscope-container';
-                    kaleidoscopeContainer.style.position = 'absolute';
-                    kaleidoscopeContainer.style.top = '50%';
-                    kaleidoscopeContainer.style.left = '50%';
-                    kaleidoscopeContainer.style.transform = 'translate(-50%, -50%)';
-                    kaleidoscopeContainer.style.width = '0';
-                    kaleidoscopeContainer.style.height = '0';
-                    kaleidoscopeContainer.style.zIndex = '1000';
-                    document.body.appendChild(kaleidoscopeContainer);
+                    // Create a visual debug message to confirm animation is running
+                    console.log("Starting kaleidoscope animation");
                     
-                    // Create the kaleidoscope pattern
-                    for (let i = 0; i < cloneCount; i++) {
-                        const clone = document.createElement('img');
-                        clone.src = animationCat.src;
-                        clone.className = 'animation-cat clone-cat kaleidoscope-cat';
-                        clone.style.display = 'block';
-                        clone.style.position = 'absolute';
-                        clone.style.width = '60px';
+                    // Create main container for kaleidoscope with defined dimensions
+                    const kalContainer = document.createElement('div');
+                    kalContainer.className = 'kaleidoscope-container';
+                    kalContainer.style.position = 'absolute';
+                    kalContainer.style.top = '50%';
+                    kalContainer.style.left = '50%';
+                    kalContainer.style.width = containerSize + 'px';
+                    kalContainer.style.height = containerSize + 'px';
+                    kalContainer.style.transform = 'translate(-50%, -50%)';
+                    kalContainer.style.zIndex = '1000';
+                    kalContainer.style.background = 'transparent';
+                    document.body.appendChild(kalContainer);
+                    
+                    // Create cats in a circle pattern
+                    for (let i = 0; i < catCount; i++) {
+                        const cat = document.createElement('img');
+                        cat.src = animationCat.src;
+                        cat.className = 'kaleidoscope-cat';
+                        cat.style.position = 'absolute';
+                        cat.style.width = catSize + 'px';
+                        cat.style.height = 'auto';
                         
-                        // Position in a circle
-                        const angle = (i / cloneCount) * 360; // degrees
-                        const radians = angle * (Math.PI / 180);
-                        clone.style.transformOrigin = `${-radius}px 50%`; // Set the rotation origin
+                        // Calculate position on circle
+                        const angle = (i / catCount) * 2 * Math.PI;
+                        const radius = containerSize / 2 - catSize / 2;
+                        const x = radius * Math.cos(angle) + containerSize / 2 - catSize / 2;
+                        const y = radius * Math.sin(angle) + containerSize / 2 - catSize / 2;
                         
-                        // Create unique animation name for this clone
-                        const kAnimName = `kaleidoscope${i}`;
-                        const kAnimation = `
-                            @keyframes ${kAnimName} {
-                                0% { 
-                                    transform: rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg) scale(0.5);
-                                    opacity: 0;
-                                }
-                                10% {
-                                    opacity: 1;
-                                }
-                                50% {
-                                    transform: rotate(${angle + 180}deg) translateX(${radius * 1.2}px) rotate(${-angle - 180}deg) scale(1.2);
-                                }
-                                90% {
-                                    opacity: 1;
-                                }
-                                100% { 
-                                    transform: rotate(${angle + 360}deg) translateX(${radius}px) rotate(${-angle - 360}deg) scale(0.5);
-                                    opacity: 0;
-                                }
+                        // Position the cat
+                        cat.style.left = x + 'px';
+                        cat.style.top = y + 'px';
+                        cat.style.transformOrigin = 'center center';
+                        
+                        // Add to container
+                        kalContainer.appendChild(cat);
+                        
+                        // Create individual rotation
+                        const rotateKeyframes = `
+                            @keyframes rotateCat${i} {
+                                0% { transform: rotate(0deg) scale(1); }
+                                50% { transform: rotate(180deg) scale(1.5); }
+                                100% { transform: rotate(360deg) scale(1); }
                             }
                         `;
                         
-                        const kStyle = document.createElement('style');
-                        kStyle.innerHTML = kAnimation;
-                        document.head.appendChild(kStyle);
+                        const style = document.createElement('style');
+                        style.innerHTML = rotateKeyframes;
+                        document.head.appendChild(style);
                         
-                        // Apply the animation with slight delay based on position
-                        clone.style.animation = `${kAnimName} 6s ease-in-out forwards`;
-                        kaleidoscopeContainer.appendChild(clone);
+                        // Apply the animation
+                        cat.style.animation = `rotateCat${i} 4s linear infinite`;
                     }
                     
-                    // Create rotation animation for the entire container
-                    const containerAnimName = `containerRotate`;
-                    const containerAnimation = `
-                        @keyframes ${containerAnimName} {
+                    // Create container rotation animation
+                    const rotateContainerKeyframes = `
+                        @keyframes rotateContainer {
                             0% { transform: translate(-50%, -50%) rotate(0deg); }
                             100% { transform: translate(-50%, -50%) rotate(360deg); }
                         }
                     `;
                     
                     const containerStyle = document.createElement('style');
-                    containerStyle.innerHTML = containerAnimation;
+                    containerStyle.innerHTML = rotateContainerKeyframes;
                     document.head.appendChild(containerStyle);
                     
-                    // Apply the container rotation
-                    kaleidoscopeContainer.style.animation = `${containerAnimName} 6s linear forwards`;
+                    // Apply container rotation
+                    kalContainer.style.animation = 'rotateContainer 10s linear infinite';
                     
-                    // Remove the container after animation completes
+                    // Create fade-in and fade-out animation
+                    const fadeKeyframes = `
+                        @keyframes kalFade {
+                            0% { opacity: 0; }
+                            10% { opacity: 1; }
+                            90% { opacity: 1; }
+                            100% { opacity: 0; }
+                        }
+                    `;
+                    
+                    const fadeStyle = document.createElement('style');
+                    fadeStyle.innerHTML = fadeKeyframes;
+                    document.head.appendChild(fadeStyle);
+                    
+                    // Apply fade animation to container
+                    kalContainer.style.animation += ', kalFade 6s forwards';
+                    
+                    // Remove after animation completes
                     setTimeout(() => {
-                        kaleidoscopeContainer.remove();
+                        kalContainer.remove();
                     }, 6000);
                     
                     animationDuration = 6000;
                     break;
-                    
             }
 
             // Reset button text after animation completes
