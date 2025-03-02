@@ -156,7 +156,7 @@
         // Cat animation effects
         document.getElementById('catEffectBtn').addEventListener('click', function() {
             // Pick a random effect (1-4)
-            const effectNumber = Math.floor(Math.random() * 10) + 1;
+            const effectNumber = Math.floor(Math.random() * 4) + 1;
             const animationCat = document.getElementById('animationCat');
 
             // Change button text to "Surprise!"
@@ -372,7 +372,7 @@
                     animationDuration = 2000;
                     break;
                     
-                case 6:
+                /* case 6:
                     // Bouncing Cat
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
@@ -466,7 +466,7 @@
                     
                     animationCat.style.animation = 'pulse 3s ease-in-out forwards';
                     animationDuration = 3000;
-                    break;
+                    break; */
 
                     
             }
