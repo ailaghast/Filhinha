@@ -156,19 +156,20 @@
         const originalText = "?";
         const effectText = "Surprise!";
 
-        // Function to check if a variable is defined
-function isDefined(variable) {
-    return typeof variable !== 'undefined' && variable !== null;
-}
-
-        // Cat animation effects
+         // Cat animation effects
         document.getElementById('catEffectBtn').addEventListener('click', function() {
+            // Function to check if a variable is defined
+            function isDefined(variable) {
+                return typeof variable !== 'undefined' && variable !== null;
+            }
+            
             // Pick a random effect (1-10) or use test animation if defined
-const effectNumber = isDefined(TEST_ANIMATION) ? TEST_ANIMATION : Math.floor(Math.random() * 10) + 1;
-            const animationCat = document.getElementById('animationCat');
-
+            const effectNumber = isDefined(TEST_ANIMATION) ? TEST_ANIMATION : Math.floor(Math.random() * 10) + 1;
+            
             // Log which animation is playing (helpful for debugging)
-console.log("Playing animation #" + effectNumber);
+            console.log("Playing animation #" + effectNumber);
+            
+            const animationCat = document.getElementById('animationCat');
 
             // Change button text to "Surprise!"
             button.textContent = effectText;
