@@ -83,37 +83,37 @@
     <img id="animationCat" class="animation-cat" src="https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/Favicon.png" alt="Animation Filhinha">
     <script>
         // TESTING MODE: Uncomment the line below and set the number (1-10) to test a specific animation
-        const TEST_ANIMATION = 5; // <-- Change this number to test different animations
+        // const TEST_ANIMATION = 5; // <-- Change this number to test different animations
         
         // List of images
         const images = [
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200319_194624333.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200319_194705881.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200528_155802232_HDR.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200618_201639925.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200623_121205195%20copuy.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200718_163715912%20copy.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200731_121903854.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200911_064423823.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20201210_224946268.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20210316_032943017.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20210316_032954933.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20210710_213642851%20copy.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20220324_161748.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20220913_155511.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20221227_001512.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20230424_155001_1.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20230528_232531.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20230607_160353_1.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2019-12-04_01-48-36.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2020-04-06_14-44-46.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-10-56%20(2).jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-10-56.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-11-28.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-12-09.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-12-42.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-13-18.jpg',
-    'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2023-11-09_19-02-47.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200319_194705881.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200528_155802232_HDR.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200618_201639925.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200623_121205195%20copuy.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200718_163715912%20copy.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200731_121903854.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20200911_064423823.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20201210_224946268.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20210316_032943017.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20210316_032954933.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20210710_213642851%20copy.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20220324_161748.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20220913_155511.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20221227_001512.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20230424_155001_1.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20230528_232531.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/IMG_20230607_160353_1.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2019-12-04_01-48-36.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2020-04-06_14-44-46.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-10-56%20(2).jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-10-56.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-11-28.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-12-09.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-12-42.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-13-18.jpg',
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2023-11-09_19-02-47.jpg',
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-03-30_10-21-53.jpg',
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-42-45.jpg',
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-43-04.jpg',
@@ -132,9 +132,7 @@
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-48-50%20(3).jpg',
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-48-50%20(4).jpg',
             'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-48-50%20(5).jpg',
-            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-48-50.jpg',
-            
-            // Add more image URLs as needed
+            'https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/photo_2024-05-07_20-48-50.jpg'
         ];
 
         // Function to select a random image
@@ -374,7 +372,7 @@
                     
                     const spinAnimation = `
                         @keyframes spinAround {
-                            0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.1); }
+                            0% { transform: translate(-50%, -50%) scale(0.1); }
                             10% { transform: translate(-50%, -50%) rotate(720deg) scale(0.3); }
                             20% { transform: translate(-50%, -50%) rotate(1440deg) scale(0.6); }
                             30% { transform: translate(-50%, -50%) rotate(2160deg) scale(1.0); }
@@ -397,41 +395,19 @@
                     break;
                     
                 case 6:
-                    // New Bouncing Cat - smooth and natural bouncing
+                    // Smooth Bouncing Cat
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
-                    animationCat.style.bottom = '80%';
-                    animationCat.style.left = '10%';
                     animationCat.style.width = '80px';
+                    animationCat.style.left = '10%';
+                    animationCat.style.bottom = '80%';
                     
-                    // Create a container to handle horizontal movement
-                    const bounceContainer = document.createElement('div');
-                    bounceContainer.style.position = 'absolute';
-                    bounceContainer.style.width = '100%';
-                    bounceContainer.style.height = '100%';
-                    bounceContainer.style.top = '0';
-                    bounceContainer.style.left = '0';
-                    bounceContainer.style.pointerEvents = 'none';
-                    document.body.appendChild(bounceContainer);
-                    
-                    // Append the cat to the container
-                    bounceContainer.appendChild(animationCat);
-                    
-                    // Create horizontal movement animation
-                    const horizontalAnimation = `
-                        @keyframes moveHorizontal {
-                            0% { transform: translateX(10%); }
-                            16% { transform: translateX(25%); }
-                            32% { transform: translateX(40%); }
-                            48% { transform: translateX(55%); }
-                            64% { transform: translateX(70%); }
-                            80% { transform: translateX(85%); }
-                            100% { transform: translateX(100%); }
+                    const bounceAnimation = `
+                        @keyframes bounceHorizontal {
+                            0% { left: 10%; }
+                            100% { left: 80%; }
                         }
-                    `;
-                    
-                    // Create vertical bouncing animation
-                    const verticalAnimation = `
+                        
                         @keyframes bounceVertical {
                             0% { bottom: 80%; }
                             15% { bottom: 20%; }
@@ -442,31 +418,19 @@
                             90% { bottom: 30%; }
                             100% { bottom: -20%; opacity: 0; }
                         }
-                    `;
-                    
-                    // Create rotation animation
-                    const rotationAnimation = `
+                        
                         @keyframes gentleRotate {
-                            0% { transform: rotate(0deg); }
-                            25% { transform: rotate(15deg); }
-                            75% { transform: rotate(-15deg); }
-                            100% { transform: rotate(0deg); }
+                            0% { transform: rotate(-10deg); }
+                            50% { transform: rotate(10deg); }
+                            100% { transform: rotate(-10deg); }
                         }
                     `;
                     
-                    // Add all animations to the document
-                    const animationStyle = document.createElement('style');
-                    animationStyle.innerHTML = horizontalAnimation + verticalAnimation + rotationAnimation;
-                    document.head.appendChild(animationStyle);
+                    const bounceStyle = document.createElement('style');
+                    bounceStyle.innerHTML = bounceAnimation;
+                    document.head.appendChild(bounceStyle);
                     
-                    // Apply animations
-                    bounceContainer.style.animation = 'moveHorizontal 6s ease-in-out forwards';
-                    animationCat.style.animation = 'bounceVertical 6s ease-in-out forwards, gentleRotate 1s ease-in-out infinite';
-                    
-                    // Cleanup after animation completes
-                    setTimeout(() => {
-                        bounceContainer.remove();
-                    }, 6000);
+                    animationCat.style.animation = 'bounceHorizontal 6s linear forwards, bounceVertical 6s ease-in-out forwards, gentleRotate 0.5s ease-in-out infinite';
                     
                     animationDuration = 6000;
                     break;
@@ -503,7 +467,12 @@
                             document.body.appendChild(clone);
                             
                             // Wiggle effect
-                            setInterval(() => {
+                            let startTime = Date.now();
+                            let wiggleInterval = setInterval(() => {
+                                if (Date.now() - startTime > 4000) {
+                                    clearInterval(wiggleInterval);
+                                    return;
+                                }
                                 clone.style.bottom = `${30 + Math.sin(Date.now() / 200 + i) * 5}px`;
                             }, 50);
                             
@@ -522,7 +491,6 @@
                     animationCat.style.left = '50%';
                     animationCat.style.width = '0px';
                     animationCat.style.transform = 'translate(-50%, -50%)';
-                    animationCat.style.borderRadius = '50%'; // Start as a circle
                     
                     const pulseAnimation = `
                         @keyframes dramaticPulse {
@@ -540,207 +508,162 @@
                         }
                     `;
                     
-                    // Add a pulsing shadow effect
-                    const shadowAnimation = `
-                        @keyframes pulseShadow {
-                            0% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
-                            50% { box-shadow: 0 0 20px 10px rgba(0,0,0,0.3); }
-                            100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
-                        }
-                    `;
-                    
                     const pulseStyle = document.createElement('style');
-                    pulseStyle.innerHTML = pulseAnimation + shadowAnimation;
+                    pulseStyle.innerHTML = pulseAnimation;
                     document.head.appendChild(pulseStyle);
                     
-                    animationCat.style.animation = 'dramaticPulse 5s ease-in-out forwards, pulseShadow 1s ease-in-out infinite';
+                    animationCat.style.animation = 'dramaticPulse 5s ease-in-out forwards';
                     animationDuration = 5000;
                     break;
                     
                 case 9:
-                    // Improved Mouse Chase (smoother)
+                    // Simple Mouse Chase with improved performance
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
                     animationCat.style.width = '60px';
                     animationCat.style.zIndex = '1000';
                     
-                    // Get initial mouse position or use center of screen
+                    // Position cat initially in the center
+                    animationCat.style.top = '50%';
+                    animationCat.style.left = '50%';
+                    animationCat.style.transform = 'translate(-50%, -50%)';
+                    
+                    // Mouse position tracker
                     let mouseX = window.innerWidth / 2;
                     let mouseY = window.innerHeight / 2;
                     
-                    // Position cat initially
-                    animationCat.style.top = mouseY + 'px';
-                    animationCat.style.left = mouseX + 'px';
-                    animationCat.style.transform = 'translate(-50%, -50%)';
-                    
-                    // Track mouse position without delay for smoother following
-                    const trackMouseHandler = (e) => {
+                    // Update mouse position on move
+                    const mouseTracker = (e) => {
                         mouseX = e.clientX;
                         mouseY = e.clientY;
                     };
                     
-                    // Use requestAnimationFrame for smooth animation
-                    let animationFrameId;
-                    let lastDirection = 'right'; // Track last direction to avoid flickering
+                    document.addEventListener('mousemove', mouseTracker);
                     
-                    // Function to animate the cat
-                    const animateCat = () => {
-                        // Current cat position
-                        const catX = parseFloat(animationCat.style.left) || mouseX;
-                        const catY = parseFloat(animationCat.style.top) || mouseY;
+                    // Smooth follower with optimized animation
+                    let lastDirection = 'right';
+                    let moveInterval = setInterval(() => {
+                        // Get current cat position
+                        const catX = parseInt(animationCat.style.left) || window.innerWidth / 2;
+                        const catY = parseInt(animationCat.style.top) || window.innerHeight / 2;
                         
-                        // Calculate new position with easing (smoother follow)
-                        const newX = catX + (mouseX - catX) * 0.15;
-                        const newY = catY + (mouseY - catY) * 0.15;
+                        // Calculate new position with easing
+                        const newX = catX + (mouseX - catX) * 0.1;
+                        const newY = catY + (mouseY - catY) * 0.1;
                         
-                        // Update cat position
+                        // Update position
                         animationCat.style.left = newX + 'px';
                         animationCat.style.top = newY + 'px';
                         
-                        // Determine direction with hysteresis to prevent flickering
-                        const movingRight = mouseX > catX;
-                        if ((movingRight && lastDirection === 'left' && mouseX - catX > 20) || 
-                            (!movingRight && lastDirection === 'right' && catX - mouseX > 20)) {
-                            lastDirection = movingRight ? 'right' : 'left';
-                            animationCat.style.transform = 'translate(-50%, -50%) scaleX(' + (movingRight ? 1 : -1) + ')';
+                        // Update direction with hysteresis to avoid flicker
+                        if ((mouseX > catX && lastDirection === 'left' && mouseX - catX > 20) || 
+                            (mouseX < catX && lastDirection === 'right' && catX - mouseX > 20)) {
+                            lastDirection = mouseX > catX ? 'right' : 'left';
+                            animationCat.style.transform = `scaleX(${lastDirection === 'right' ? 1 : -1})`;
                         }
-                        
-                        // Continue animation
-                        animationFrameId = requestAnimationFrame(animateCat);
-                    };
+                    }, 20);
                     
-                    // Start tracking mouse and animation
-                    document.addEventListener('mousemove', trackMouseHandler);
-                    animationFrameId = requestAnimationFrame(animateCat);
-                    
-                    // Add fade out animation
-                    const fadeOutAnimation = `
-                        @keyframes fadeOut {
-                            0% { opacity: 1; }
-                            100% { opacity: 0; }
-                        }
-                    `;
-                    
-                    const fadeStyle = document.createElement('style');
-                    fadeStyle.innerHTML = fadeOutAnimation;
-                    document.head.appendChild(fadeStyle);
-                    
-                    // Set duration and cleanup
-                    const chaseDuration = 5000; // 5 seconds of chasing
+                    // Cleanup after set time
                     setTimeout(() => {
-                        // Stop animation and tracking
-                        cancelAnimationFrame(animationFrameId);
-                        document.removeEventListener('mousemove', trackMouseHandler);
+                        clearInterval(moveInterval);
+                        document.removeEventListener('mousemove', mouseTracker);
                         
-                        // Fade out
-                        animationCat.style.animation = 'fadeOut 1s forwards';
-                        
-                        // Cleanup
-                        setTimeout(() => {
-                            animationCat.style.display = 'none';
-                        }, 1000);
-                    }, chaseDuration);
-                    
-                    animationDuration = chaseDuration + 1000; // chase time + fade out time
-                    break;
-                    
-                case 10:
-                    // Fixed Kaleidoscope effect - completely redone
-                    const containerSize = 300; // Size of the container
-                    const catSize = 50; // Size of each cat image
-                    const catCount = 12; // Number of cats in the kaleidoscope
-                    
-                    // Create a visual debug message to confirm animation is running
-                    console.log("Starting kaleidoscope animation");
-                    
-                    // Create main container for kaleidoscope with defined dimensions
-                    const kalContainer = document.createElement('div');
-                    kalContainer.className = 'kaleidoscope-container';
-                    kalContainer.style.position = 'absolute';
-                    kalContainer.style.top = '50%';
-                    kalContainer.style.left = '50%';
-                    kalContainer.style.width = containerSize + 'px';
-                    kalContainer.style.height = containerSize + 'px';
-                    kalContainer.style.transform = 'translate(-50%, -50%)';
-                    kalContainer.style.zIndex = '1000';
-                    kalContainer.style.background = 'transparent';
-                    document.body.appendChild(kalContainer);
-                    
-                    // Create cats in a circle pattern
-                    for (let i = 0; i < catCount; i++) {
-                        const cat = document.createElement('img');
-                        cat.src = animationCat.src;
-                        cat.className = 'kaleidoscope-cat';
-                        cat.style.position = 'absolute';
-                        cat.style.width = catSize + 'px';
-                        cat.style.height = 'auto';
-                        
-                        // Calculate position on circle
-                        const angle = (i / catCount) * 2 * Math.PI;
-                        const radius = containerSize / 2 - catSize / 2;
-                        const x = radius * Math.cos(angle) + containerSize / 2 - catSize / 2;
-                        const y = radius * Math.sin(angle) + containerSize / 2 - catSize / 2;
-                        
-                        // Position the cat
-                        cat.style.left = x + 'px';
-                        cat.style.top = y + 'px';
-                        cat.style.transformOrigin = 'center center';
-                        
-                        // Add to container
-                        kalContainer.appendChild(cat);
-                        
-                        // Create individual rotation
-                        const rotateKeyframes = `
-                            @keyframes rotateCat${i} {
-                                0% { transform: rotate(0deg) scale(1); }
-                                50% { transform: rotate(180deg) scale(1.5); }
-                                100% { transform: rotate(360deg) scale(1); }
+                        // Fade out animation
+                        const fadeAnimation = `
+                            @keyframes fadeOut {
+                                from { opacity: 1; }
+                                to { opacity: 0; }
                             }
                         `;
                         
-                        const style = document.createElement('style');
-                        style.innerHTML = rotateKeyframes;
-                        document.head.appendChild(style);
+                        const fadeStyle = document.createElement('style');
+                        fadeStyle.innerHTML = fadeAnimation;
+                        document.head.appendChild(fadeStyle);
                         
-                        // Apply the animation
-                        cat.style.animation = `rotateCat${i} 4s linear infinite`;
+                        animationCat.style.animation = 'fadeOut 1s forwards';
+                        
+                        setTimeout(() => {
+                            animationCat.style.display = 'none';
+                        }, 1000);
+                    }, 5000);
+                    
+                    animationDuration = 6000; // chase + fade
+                    break;
+                    
+                case 10:
+                    // Simple Kaleidoscope that works
+                    const catSize = 60;
+                    const numCats = 8;
+                    const radius = 120;
+                    
+                    // Create a central container element
+                    const container = document.createElement('div');
+                    container.style.position = 'absolute';
+                    container.style.left = '50%';
+                    container.style.top = '50%';
+                    container.style.width = '0';
+                    container.style.height = '0';
+                    container.style.zIndex = '1000';
+                    document.body.appendChild(container);
+                    
+                    // Create cats in a circular pattern
+                    for (let i = 0; i < numCats; i++) {
+                        const cat = document.createElement('img');
+                        cat.src = animationCat.src;
+                        cat.className = 'animation-cat clone-cat';
+                        cat.style.display = 'block';
+                        cat.style.position = 'absolute';
+                        cat.style.width = catSize + 'px';
+                        
+                        // Position around a circle
+                        const angle = (i / numCats) * Math.PI * 2; // in radians
+                        const x = Math.cos(angle) * radius;
+                        const y = Math.sin(angle) * radius;
+                        
+                        cat.style.transform = `translate(${x - catSize/2}px, ${y - catSize/2}px)`;
+                        
+                        // Add to container
+                        container.appendChild(cat);
+                        
+                        // Create individual rotation
+                        const catRotateKeyframes = `
+                            @keyframes rotateCat${i} {
+                                from { transform: translate(${x - catSize/2}px, ${y - catSize/2}px) rotate(0deg); }
+                                to { transform: translate(${x - catSize/2}px, ${y - catSize/2}px) rotate(360deg); }
+                            }
+                        `;
+                        
+                        const catStyle = document.createElement('style');
+                        catStyle.innerHTML = catRotateKeyframes;
+                        document.head.appendChild(catStyle);
+                        
+                        cat.style.animation = `rotateCat${i} ${3 + i % 2}s linear infinite`;
                     }
                     
-                    // Create container rotation animation
-                    const rotateContainerKeyframes = `
-                        @keyframes rotateContainer {
-                            0% { transform: translate(-50%, -50%) rotate(0deg); }
-                            100% { transform: translate(-50%, -50%) rotate(360deg); }
+                    // Create container rotation
+                    const containerRotateKeyframes = `
+                        @keyframes containerRotate {
+                            from { transform: translate(-50%, -50%) rotate(0deg); }
+                            to { transform: translate(-50%, -50%) rotate(360deg); }
+                        }
+                        
+                        @keyframes fadeInOut {
+                            0% { opacity: 0; }
+                            20% { opacity: 1; }
+                            80% { opacity: 1; }
+                            100% { opacity: 0; }
                         }
                     `;
                     
                     const containerStyle = document.createElement('style');
-                    containerStyle.innerHTML = rotateContainerKeyframes;
+                    containerStyle.innerHTML = containerRotateKeyframes;
                     document.head.appendChild(containerStyle);
                     
-                    // Apply container rotation
-                    kalContainer.style.animation = 'rotateContainer 10s linear infinite';
+                    container.style.animation = 'containerRotate 10s linear infinite, fadeInOut 6s forwards';
                     
-                    // Create fade-in and fade-out animation
-                    const fadeKeyframes = `
-                        @keyframes kalFade {
-                            0% { opacity: 0; }
-                            10% { opacity: 1; }
-                            90% { opacity: 1; }
-                            100% { opacity: 0; }
-                        }
-                    `;
-                    
-                    const fadeStyle = document.createElement('style');
-                    fadeStyle.innerHTML = fadeKeyframes;
-                    document.head.appendChild(fadeStyle);
-                    
-                    // Apply fade animation to container
-                    kalContainer.style.animation += ', kalFade 6s forwards';
-                    
-                    // Remove after animation completes
+                    // Cleanup
                     setTimeout(() => {
-                        kalContainer.remove();
+                        container.remove();
                     }, 6000);
                     
                     animationDuration = 6000;
