@@ -11,6 +11,9 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            align-items: center;
+            overflow: hidden; /* Prevents scrollbars when animations run */
+            position: relative;
         }
         img {
             display: block; /* Removes bottom margin/gap */
@@ -20,10 +23,48 @@
             height: auto;
             margin-top: 20px; /* Adjusts to viewport height */
         }
+        .fun-button {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+        
+        .fun-button:hover {
+            background-color: #444;
+        }
+
+        .last-updated {
+            position: fixed;
+            bottom: 10px;
+            color: #555;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .animation-cat {
+            position: absolute;
+            pointer-events: none; /* Makes the animation pass through mouse events */
+            z-index: 10;
+            width: 100px; /* Adjust size as needed */
+            height: auto;
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
     <img id="randomImage" src="" alt="A random photo of Filhinha">
+    <button id="catEffectBtn" class="fun-button">Surprise Filhinha Effect!</button>
+    <div class="last-updated">Last updated: <span id="lastUpdated"></span></div>
+
+    <!-- This will be your transparent animation cat that's not shown until triggered -->
+    <img id="animationCat" class="animation-cat" src="https://raw.githubusercontent.com/ailaghast/Filhinha/main/Images/Favicon.png" alt="Animation Filhinha">
     <script>
         // List of images
         const images = [
@@ -87,6 +128,198 @@
 
         // Set the source of the image to a random one from the list
         document.getElementById('randomImage').src = getRandomImage();
+
+         // Set the last updated date
+        document.getElementById('lastUpdated').textContent = document.lastModified;
+
+        // Cat animation effects
+        document.getElementById('catEffectBtn').addEventListener('click', function() {
+            // Pick a random effect (1-4)
+            const effectNumber = Math.floor(Math.random() * 4) + 1;
+            const animationCat = document.getElementById('animationCat');
+            
+            // Reset any previous animations
+            animationCat.style.display = 'none';
+            animationCat.style.animation = '';
+            animationCat.style.transform = '';
+            animationCat.style.opacity = '1';
+            
+            // Remove any existing clones
+            document.querySelectorAll('.clone-cat').forEach(cat => cat.remove());
+            
+            switch(effectNumber) {
+                case 1:
+                    // Walking cat effect
+                    animationCat.style.display = 'block';
+                    animationCat.style.position = 'absolute';
+                    animationCat.style.bottom = '10px';
+                    animationCat.style.left = '-100px';
+                    animationCat.style.width = '100px';
+                    
+                    // Create animation
+                    const walkAnimation = `
+                        @keyframes walkAcross {
+                            0% { left: -100px; transform: scaleX(1); }
+                            45% { left: calc(50% - 50px); transform: scaleX(1); }
+                            50% { left: calc(50% - 50px); transform: scaleX(-1); }
+                            100% { left: calc(100% + 100px); transform: scaleX(-1); }
+                        }
+                    `;
+                    
+                    // Add the animation to the document
+                    const walkStyle = document.createElement('style');
+                    walkStyle.innerHTML = walkAnimation;
+                    document.head.appendChild(walkStyle);
+                    
+                    // Apply the animation
+                    animationCat.style.animation = 'walkAcross 5s linear forwards';
+                    break;
+                    
+                case 2:
+                    // Explosion of cats
+                    animationCat.style.display = 'block';
+                    animationCat.style.position = 'absolute';
+                    animationCat.style.bottom = '-100px';
+                    animationCat.style.left = 'calc(50% - 50px)';
+                    animationCat.style.width = '100px';
+                    
+                    // Create rising animation
+                    const riseAnimation = `
+                        @keyframes riseUp {
+                            0% { bottom: -100px; }
+                            100% { bottom: 50%; }
+                        }
+                    `;
+                    
+                    const riseStyle = document.createElement('style');
+                    riseStyle.innerHTML = riseAnimation;
+                    document.head.appendChild(riseStyle);
+                    
+                    // Apply the animation
+                    animationCat.style.animation = 'riseUp 1s ease-out forwards';
+                    
+                    // After rising, create explosion of cats
+                    setTimeout(function() {
+                        // Hide the original
+                        animationCat.style.display = 'none';
+                        
+                        // Create 10 clone cats that fly outward
+                        for (let i = 0; i < 10; i++) {
+                            const clone = document.createElement('img');
+                            clone.src = animationCat.src;
+                            clone.className = 'animation-cat clone-cat';
+                            clone.style.display = 'block';
+                            clone.style.position = 'absolute';
+                            clone.style.width = '60px';
+                            clone.style.left = 'calc(50% - 30px)';
+                            clone.style.bottom = '50%';
+                            
+                            // Random angle for this cat
+                            const angle = (i / 10) * 360; // Degrees
+                            const radians = angle * Math.PI / 180;
+                            const speed = 5 + Math.random() * 5;
+                            
+                            // Create unique animation name for this clone
+                            const animName = `explode${i}`;
+                            const explodeAnimation = `
+                                @keyframes ${animName} {
+                                    0% { 
+                                        transform: translate(0, 0) rotate(0deg); 
+                                        opacity: 1;
+                                    }
+                                    100% { 
+                                        transform: translate(${Math.cos(radians) * 500}px, ${-Math.sin(radians) * 500}px) rotate(${Math.random() * 360}deg); 
+                                        opacity: 0;
+                                    }
+                                }
+                            `;
+                            
+                            const explodeStyle = document.createElement('style');
+                            explodeStyle.innerHTML = explodeAnimation;
+                            document.head.appendChild(explodeStyle);
+                            
+                            clone.style.animation = `${animName} 2s ease-out forwards`;
+                            document.body.appendChild(clone);
+                        }
+                    }, 1000);
+                    break;
+                    
+                case 3:
+                    // Rain of cats
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            const clone = document.createElement('img');
+                            clone.src = animationCat.src;
+                            clone.className = 'animation-cat clone-cat';
+                            clone.style.display = 'block';
+                            clone.style.position = 'absolute';
+                            clone.style.width = `${30 + Math.random() * 50}px`;
+                            clone.style.top = '-100px';
+                            clone.style.left = `${Math.random() * 100}%`;
+                            clone.style.transform = `rotate(${Math.random() * 360}deg)`;
+                            
+                            // Create falling animation
+                            const fallAnimName = `fall${i}`;
+                            const fallAnimation = `
+                                @keyframes ${fallAnimName} {
+                                    0% { top: -100px; }
+                                    100% { top: ${100 + Math.random() * 20}%; }
+                                }
+                            `;
+                            
+                            const fallStyle = document.createElement('style');
+                            fallStyle.innerHTML = fallAnimation;
+                            document.head.appendChild(fallStyle);
+                            
+                            // Apply the animation
+                            const duration = 1 + Math.random() * 2;
+                            clone.style.animation = `${fallAnimName} ${duration}s linear forwards`;
+                            document.body.appendChild(clone);
+                            
+                            // Remove after animation completes
+                            setTimeout(() => clone.remove(), duration * 1000 + 500);
+                        }, i * 200); // Stagger the drops
+                    }
+                    break;
+                    
+                case 4:
+                    // Peeking cat
+                    animationCat.style.display = 'block';
+                    animationCat.style.position = 'absolute';
+                    animationCat.style.bottom = '0';
+                    
+                    // Randomly choose left or right side
+                    const fromLeft = Math.random() > 0.5;
+                    if (fromLeft) {
+                        animationCat.style.left = '-100px';
+                        animationCat.style.transform = 'scaleX(1)';
+                    } else {
+                        animationCat.style.right = '-100px';
+                        animationCat.style.transform = 'scaleX(-1)';
+                    }
+                    
+                    animationCat.style.width = '120px';
+                    
+                    // Create peek animation
+                    const peekAnimName = fromLeft ? 'peekFromLeft' : 'peekFromRight';
+                    const peekAnimation = `
+                        @keyframes ${peekAnimName} {
+                            0% { ${fromLeft ? 'left: -100px' : 'right: -100px'}; }
+                            20% { ${fromLeft ? 'left: 0' : 'right: 0'}; }
+                            80% { ${fromLeft ? 'left: 0' : 'right: 0'}; }
+                            100% { ${fromLeft ? 'left: -100px' : 'right: -100px'}; }
+                        }
+                    `;
+                    
+                    const peekStyle = document.createElement('style');
+                    peekStyle.innerHTML = peekAnimation;
+                    document.head.appendChild(peekStyle);
+                    
+                    // Apply the animation
+                    animationCat.style.animation = `${peekAnimName} 3s ease-in-out forwards`;
+                    break;
+            }
+        });
     </script>
 </body>
 </html>
