@@ -362,27 +362,27 @@
                     break;
 
                 case 5:
-                    // Spinning Cat - newspaper effect
+                    // Spinning Cat - newspaper effect (FIXED - larger size)
                     animationCat.style.display = 'block';
                     animationCat.style.position = 'absolute';
                     animationCat.style.top = '50%';
                     animationCat.style.left = '50%';
                     animationCat.style.transform = 'translate(-50%, -50%)';
-                    animationCat.style.width = '10px'; // Start very small
+                    animationCat.style.width = '50px'; // Start larger so it's visible
                     
                     const spinAnimation = `
                         @keyframes spinAround {
-                            0% { transform: translate(-50%, -50%) scale(0.1); }
-                            10% { transform: translate(-50%, -50%) rotate(720deg) scale(0.3); }
-                            20% { transform: translate(-50%, -50%) rotate(1440deg) scale(0.6); }
-                            30% { transform: translate(-50%, -50%) rotate(2160deg) scale(1.0); }
-                            40% { transform: translate(-50%, -50%) rotate(2880deg) scale(1.5); }
-                            50% { transform: translate(-50%, -50%) rotate(3600deg) scale(3.0); }
-                            60% { transform: translate(-50%, -50%) rotate(3600deg) scale(3.0); }
-                            70% { transform: translate(-50%, -50%) rotate(4320deg) scale(2.0); }
-                            80% { transform: translate(-50%, -50%) rotate(5040deg) scale(1.0); }
-                            90% { transform: translate(-50%, -50%) rotate(5760deg) scale(0.5); }
-                            100% { transform: translate(-50%, -50%) rotate(6480deg) scale(0.1); opacity: 0; }
+                            0% { transform: translate(-50%, -50%) scale(0.5); }
+                            10% { transform: translate(-50%, -50%) rotate(720deg) scale(1.0); }
+                            20% { transform: translate(-50%, -50%) rotate(1440deg) scale(1.5); }
+                            30% { transform: translate(-50%, -50%) rotate(2160deg) scale(2.0); }
+                            40% { transform: translate(-50%, -50%) rotate(2880deg) scale(2.5); }
+                            50% { transform: translate(-50%, -50%) rotate(3600deg) scale(4.0); }
+                            60% { transform: translate(-50%, -50%) rotate(3600deg) scale(4.0); }
+                            70% { transform: translate(-50%, -50%) rotate(4320deg) scale(3.0); }
+                            80% { transform: translate(-50%, -50%) rotate(5040deg) scale(2.0); }
+                            90% { transform: translate(-50%, -50%) rotate(5760deg) scale(1.0); }
+                            100% { transform: translate(-50%, -50%) rotate(6480deg) scale(0.5); opacity: 0; }
                         }
                     `;
                     
@@ -591,80 +591,81 @@
                     break;
                     
                 case 10:
-                    // Simple Kaleidoscope that works
-                    const catSize = 60;
-                    const numCats = 8;
-                    const radius = 120;
+                    // Super Simple Visible Kaleidoscope
+                    console.log("Starting kaleidoscope animation");
                     
-                    // Create a central container element
-                    const container = document.createElement('div');
-                    container.style.position = 'absolute';
-                    container.style.left = '50%';
-                    container.style.top = '50%';
-                    container.style.width = '0';
-                    container.style.height = '0';
-                    container.style.zIndex = '1000';
-                    document.body.appendChild(container);
+                    // Create cats directly positioned around the center
+                    const totalCats = 8;
+                    const catWidth = 80; // Make cats larger
                     
-                    // Create cats in a circular pattern
-                    for (let i = 0; i < numCats; i++) {
+                    for (let i = 0; i < totalCats; i++) {
+                        // Create a cat element
                         const cat = document.createElement('img');
                         cat.src = animationCat.src;
                         cat.className = 'animation-cat clone-cat';
-                        cat.style.display = 'block';
-                        cat.style.position = 'absolute';
-                        cat.style.width = catSize + 'px';
+                        cat.style.position = 'fixed'; // Use fixed positioning for better visibility
+                        cat.style.width = catWidth + 'px';
+                        cat.style.height = 'auto';
+                        cat.style.zIndex = '1000';
                         
-                        // Position around a circle
-                        const angle = (i / numCats) * Math.PI * 2; // in radians
-                        const x = Math.cos(angle) * radius;
-                        const y = Math.sin(angle) * radius;
+                        // Center point of the screen
+                        const centerX = window.innerWidth / 2;
+                        const centerY = window.innerHeight / 2;
                         
-                        cat.style.transform = `translate(${x - catSize/2}px, ${y - catSize/2}px)`;
+                        // Position in a circular pattern
+                        const angle = (i / totalCats) * 2 * Math.PI;
+                        const distance = 150; // Distance from center
                         
-                        // Add to container
-                        container.appendChild(cat);
+                        // Initial position
+                        const x = centerX + Math.cos(angle) * distance;
+                        const y = centerY + Math.sin(angle) * distance;
                         
-                        // Create individual rotation
-                        const catRotateKeyframes = `
-                            @keyframes rotateCat${i} {
-                                from { transform: translate(${x - catSize/2}px, ${y - catSize/2}px) rotate(0deg); }
-                                to { transform: translate(${x - catSize/2}px, ${y - catSize/2}px) rotate(360deg); }
+                        cat.style.left = (x - catWidth/2) + 'px';
+                        cat.style.top = (y - catWidth/2) + 'px';
+                        
+                        // Add to body
+                        document.body.appendChild(cat);
+                        
+                        // Create rotation and orbit animation
+                        const uniqueAnimName = `orbit${i}`;
+                        const animation = `
+                            @keyframes ${uniqueAnimName} {
+                                0% { 
+                                    transform: rotate(0deg); 
+                                    left: ${x - catWidth/2}px;
+                                    top: ${y - catWidth/2}px;
+                                    opacity: 0;
+                                }
+                                10% { opacity: 1; }
+                                50% { 
+                                    transform: rotate(180deg);
+                                    left: ${centerX + Math.cos(angle + Math.PI) * distance - catWidth/2}px;
+                                    top: ${centerY + Math.sin(angle + Math.PI) * distance - catWidth/2}px;
+                                }
+                                90% { opacity: 1; }
+                                100% { 
+                                    transform: rotate(360deg);
+                                    left: ${x - catWidth/2}px;
+                                    top: ${y - catWidth/2}px;
+                                    opacity: 0;
+                                }
                             }
                         `;
                         
-                        const catStyle = document.createElement('style');
-                        catStyle.innerHTML = catRotateKeyframes;
-                        document.head.appendChild(catStyle);
+                        // Add the animation style
+                        const style = document.createElement('style');
+                        style.innerHTML = animation;
+                        document.head.appendChild(style);
                         
-                        cat.style.animation = `rotateCat${i} ${3 + i % 2}s linear infinite`;
+                        // Apply animation
+                        cat.style.animation = `${uniqueAnimName} 6s ease-in-out forwards`;
+                        
+                        // Clean up after animation
+                        setTimeout(() => {
+                            cat.remove();
+                            style.remove();
+                        }, 6000);
                     }
-                    
-                    // Create container rotation
-                    const containerRotateKeyframes = `
-                        @keyframes containerRotate {
-                            from { transform: translate(-50%, -50%) rotate(0deg); }
-                            to { transform: translate(-50%, -50%) rotate(360deg); }
-                        }
-                        
-                        @keyframes fadeInOut {
-                            0% { opacity: 0; }
-                            20% { opacity: 1; }
-                            80% { opacity: 1; }
-                            100% { opacity: 0; }
-                        }
-                    `;
-                    
-                    const containerStyle = document.createElement('style');
-                    containerStyle.innerHTML = containerRotateKeyframes;
-                    document.head.appendChild(containerStyle);
-                    
-                    container.style.animation = 'containerRotate 10s linear infinite, fadeInOut 6s forwards';
-                    
-                    // Cleanup
-                    setTimeout(() => {
-                        container.remove();
-                    }, 6000);
                     
                     animationDuration = 6000;
                     break;
