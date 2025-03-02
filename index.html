@@ -158,13 +158,16 @@
 
          // Cat animation effects
         document.getElementById('catEffectBtn').addEventListener('click', function() {
-            // Function to check if a variable is defined
-            function isDefined(variable) {
-                return typeof variable !== 'undefined' && variable !== null;
-            }
-            
             // Pick a random effect (1-10) or use test animation if defined
-            const effectNumber = isDefined(TEST_ANIMATION) ? TEST_ANIMATION : Math.floor(Math.random() * 10) + 1;
+            let effectNumber;
+            
+            try {
+                // Try to use TEST_ANIMATION if it exists
+                effectNumber = (typeof TEST_ANIMATION !== 'undefined') ? TEST_ANIMATION : Math.floor(Math.random() * 10) + 1;
+            } catch (e) {
+                // If TEST_ANIMATION is not defined, use random
+                effectNumber = Math.floor(Math.random() * 10) + 1;
+            }
             
             // Log which animation is playing (helpful for debugging)
             console.log("Playing animation #" + effectNumber);
