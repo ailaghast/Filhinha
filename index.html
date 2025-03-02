@@ -346,6 +346,129 @@
                     animationCat.style.animation = `${peekAnimName} 3s ease-in-out forwards`;
                     animationDuration = 3000;
                     break;
+
+                    case 5:
+                    // Spinning Cat
+                    animationCat.style.display = 'block';
+                    animationCat.style.position = 'absolute';
+                    animationCat.style.top = '50%';
+                    animationCat.style.left = '50%';
+                    animationCat.style.transform = 'translate(-50%, -50%)';
+                    animationCat.style.width = '100px';
+                    
+                    const spinAnimation = `
+                        @keyframes spinAround {
+                            0% { transform: translate(-50%, -50%) rotate(0deg); }
+                            50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.5); }
+                            100% { transform: translate(-50%, -50%) rotate(360deg); opacity: 0; }
+                        }
+                    `;
+                    
+                    const spinStyle = document.createElement('style');
+                    spinStyle.innerHTML = spinAnimation;
+                    document.head.appendChild(spinStyle);
+                    
+                    animationCat.style.animation = 'spinAround 2s ease-in-out forwards';
+                    animationDuration = 2000;
+                    break;
+                    
+                case 6:
+                    // Bouncing Cat
+                    animationCat.style.display = 'block';
+                    animationCat.style.position = 'absolute';
+                    animationCat.style.top = '10%';
+                    animationCat.style.left = '10%';
+                    animationCat.style.width = '80px';
+                    
+                    const bounceAnimation = `
+                        @keyframes bounce {
+                            0% { top: 10%; left: 10%; transform: rotate(0deg); }
+                            20% { top: 80%; left: 30%; transform: rotate(90deg); }
+                            40% { top: 30%; left: 70%; transform: rotate(180deg); }
+                            60% { top: 60%; left: 40%; transform: rotate(270deg); }
+                            80% { top: 20%; left: 80%; transform: rotate(360deg); }
+                            100% { top: 110%; left: 110%; opacity: 0; }
+                        }
+                    `;
+                    
+                    const bounceStyle = document.createElement('style');
+                    bounceStyle.innerHTML = bounceAnimation;
+                    document.head.appendChild(bounceStyle);
+                    
+                    animationCat.style.animation = 'bounce 4s ease-in-out forwards';
+                    animationDuration = 4000;
+                    break;
+                    
+                case 7:
+                    // Cat Conga Line
+                    const catCount = 8;
+                    const lineDelay = 200; // ms between each cat
+                    
+                    for (let i = 0; i < catCount; i++) {
+                        setTimeout(() => {
+                            const clone = document.createElement('img');
+                            clone.src = animationCat.src;
+                            clone.className = 'animation-cat clone-cat';
+                            clone.style.display = 'block';
+                            clone.style.position = 'absolute';
+                            clone.style.width = '60px';
+                            clone.style.bottom = '30px';
+                            clone.style.left = `-60px`;
+                            
+                            const congaAnimName = `conga${i}`;
+                            const congaAnimation = `
+                                @keyframes ${congaAnimName} {
+                                    0% { left: -60px; }
+                                    100% { left: calc(100% + 60px); }
+                                }
+                            `;
+                            
+                            const congaStyle = document.createElement('style');
+                            congaStyle.innerHTML = congaAnimation;
+                            document.head.appendChild(congaStyle);
+                            
+                            clone.style.animation = `${congaAnimName} 4s linear forwards`;
+                            document.body.appendChild(clone);
+                            
+                            // Wiggle effect
+                            setInterval(() => {
+                                clone.style.bottom = `${30 + Math.sin(Date.now() / 200 + i) * 5}px`;
+                            }, 50);
+                            
+                            // Remove after animation
+                            setTimeout(() => clone.remove(), 4000);
+                        }, i * lineDelay);
+                    }
+                    animationDuration = 4000 + (catCount * lineDelay);
+                    break;
+                    
+                case 8:
+                    // Growing/Shrinking Cat
+                    animationCat.style.display = 'block';
+                    animationCat.style.position = 'absolute';
+                    animationCat.style.top = '50%';
+                    animationCat.style.left = '50%';
+                    animationCat.style.width = '0px';
+                    animationCat.style.transform = 'translate(-50%, -50%)';
+                    
+                    const pulseAnimation = `
+                        @keyframes pulse {
+                            0% { width: 0px; opacity: 0; }
+                            40% { width: 200px; opacity: 1; }
+                            60% { width: 200px; opacity: 1; }
+                            100% { width: 0px; opacity: 0; }
+                        }
+                    `;
+                    
+                    const pulseStyle = document.createElement('style');
+                    pulseStyle.innerHTML = pulseAnimation;
+                    document.head.appendChild(pulseStyle);
+                    
+                    animationCat.style.animation = 'pulse 3s ease-in-out forwards';
+                    animationDuration = 3000;
+                    break;
+
+                    
             }
 
             // Reset button text after animation completes
