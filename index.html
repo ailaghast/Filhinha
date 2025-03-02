@@ -318,23 +318,23 @@
                     // Randomly choose left or right side
                     const fromLeft = Math.random() > 0.5;
                     if (fromLeft) {
-                        animationCat.style.left = '-100px';
+                        animationCat.style.left = '-150px'; // Move starting position even further out
                         animationCat.style.transform = 'scaleX(1)';
                     } else {
-                        animationCat.style.right = '-100px';
+                        animationCat.style.right = '-150px'; // Move starting position even further out
                         animationCat.style.transform = 'scaleX(-1)';
                     }
                     
                     animationCat.style.width = '120px';
                     
-                    // Create peek animation
+                    // Create peek animation with improved positions
                     const peekAnimName = fromLeft ? 'peekFromLeft' : 'peekFromRight';
                     const peekAnimation = `
                         @keyframes ${peekAnimName} {
-                            0% { ${fromLeft ? 'left: -100px' : 'right: -100px'}; }
+                            0% { ${fromLeft ? 'left: -150px' : 'right: -150px'}; }
                             20% { ${fromLeft ? 'left: 0' : 'right: 0'}; }
                             80% { ${fromLeft ? 'left: 0' : 'right: 0'}; }
-                            100% { ${fromLeft ? 'left: -100px' : 'right: -100px'}; }
+                            100% { ${fromLeft ? 'left: -150px' : 'right: -150px'}; }
                         }
                     `;
                     
@@ -344,6 +344,7 @@
                     
                     // Apply the animation
                     animationCat.style.animation = `${peekAnimName} 3s ease-in-out forwards`;
+                    animationDuration = 3000;
                     break;
             }
 
