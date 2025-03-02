@@ -14,6 +14,12 @@
             overflow: hidden; /* Prevents scrollbars when animations run */
             position: relative;
         }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         
         img {
             display: block; /* Removes bottom margin/gap */
@@ -67,8 +73,10 @@
     </style>
 </head>
 <body>
-    <img id="randomImage" src="" alt="A random photo of Filhinha">
-    <button id="catEffectBtn" class="fun-button">Surprise</button>
+   <div class="content-container">
+        <img id="randomImage" src="" alt="A random photo of Filhinha">
+        <button id="catEffectBtn" class="fun-button">?</button>
+    </div>
     <div class="last-updated">Last updated: <span id="lastUpdated"></span></div>
 
     <!-- This will be your transparent animation cat that's not shown until triggered -->
@@ -140,11 +148,19 @@
          // Set the last updated date
         document.getElementById('lastUpdated').textContent = document.lastModified;
 
+        // Button text behavior
+        const button = document.getElementById('catEffectBtn');
+        const originalText = "?";
+        const effectText = "Surprise!";
+
         // Cat animation effects
         document.getElementById('catEffectBtn').addEventListener('click', function() {
             // Pick a random effect (1-4)
             const effectNumber = Math.floor(Math.random() * 4) + 1;
             const animationCat = document.getElementById('animationCat');
+
+            // Change button text to "Surprise!"
+            button.textContent = effectText;
             
             // Reset any previous animations
             animationCat.style.display = 'none';
@@ -154,6 +170,9 @@
             
             // Remove any existing clones
             document.querySelectorAll('.clone-cat').forEach(cat => cat.remove());
+
+            // Animation duration to use for button text reset
+            let animationDuration = 5000; // default 5 seconds
             
             switch(effectNumber) {
                 case 1:
@@ -327,6 +346,11 @@
                     animationCat.style.animation = `${peekAnimName} 3s ease-in-out forwards`;
                     break;
             }
+
+            // Reset button text after animation completes
+            setTimeout(function() {
+                button.textContent = originalText;
+            }, animationDuration);
         });
     </script>
 </body>
