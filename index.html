@@ -15,6 +15,11 @@
             overflow: hidden; /* Prevents scrollbars when animations run */
             position: relative;
         }
+        
+        .image-container {
+            margin-top: 20px;
+        }
+        
         img {
             display: block; /* Removes bottom margin/gap */
             width: auto;
@@ -23,6 +28,11 @@
             height: auto;
             margin-top: 20px; /* Adjusts to viewport height */
         }
+
+        .button-container {
+            margin-top: 15px;
+        }
+        
         .fun-button {
             margin-top: 15px;
             padding: 8px 16px;
@@ -60,7 +70,7 @@
 </head>
 <body>
     <img id="randomImage" src="" alt="A random photo of Filhinha">
-    <button id="catEffectBtn" class="fun-button">Surprise Filhinha Effect!</button>
+    <button id="catEffectBtn" class="fun-button">Surprise</button>
     <div class="last-updated">Last updated: <span id="lastUpdated"></span></div>
 
     <!-- This will be your transparent animation cat that's not shown until triggered -->
